@@ -1,0 +1,63 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>CLIENTES</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<form [formGroup]="myform">
+    <p class="ion-text-center">
+      <img src="../../assets/cli.png" >
+    </p>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Identificacion </ion-label>
+        <ion-input type="number" formControlName="identificacion" ></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" formControlName="fullname" ></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Telefono</ion-label>
+        <ion-input type="number" formControlName="phone"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      
+
+      <p class="ion-text-center">
+      <ion-button (click)="alta(myform.value)"  >Agregar Cliente</ion-button>
+      </p>
+      <p class="ion-text-center">
+      <ion-button (click)="modificacion(myform.value)"  >Editar</ion-button>
+      </p>
+  </form>
+
+  <ion-col size="6">
+  <ion-list>
+    <ion-item *ngFor="let con of lista_clientes">
+      <ion-avatar>
+        <img src="../../assets/icon/prestamos.png">
+      </ion-avatar>
+      <ion-label>
+        
+        <h2>{{con.identificacion}}</h2>
+        <h2>{{con.fullname}}</h2>
+        <h2>{{con.phone}}</h2>
+        <h2>{{con.email}}</h2>
+        <ion-button (click)="seleccionar(con)"  >Seleccionar</ion-button>
+        <ion-button color="danger" (click) ="baja(con.id)"  >Eliminar</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-col>
+</ion-content>

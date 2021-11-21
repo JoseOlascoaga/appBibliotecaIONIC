@@ -1,0 +1,74 @@
+<!--menu-->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>LIBROS</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+<form [formGroup]="myform">
+    <p class="ion-text-center">
+      <img src="../../assets/li.png" >
+    </p>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Código Libro </ion-label>
+        <ion-input type="number" formControlName="codlibro" ></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Nombre del libro</ion-label>
+        <ion-input type="text" formControlName="nombrelibro" ></ion-input>
+      </ion-item>
+
+          <ion-item lines="full">
+            <ion-label>Seleccionar autor</ion-label>
+            <ion-select formControlName="Idautor" placeholder="Seleccionar">
+              <ion-select-option *ngFor="let dato of lista_autores" value="{{dato.Idautor}}">{{dato.codautor}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label>Seleccionar editorial</ion-label>
+            <ion-select formControlName="Ideditorial" placeholder="Seleccionar">
+              <ion-select-option *ngFor="let dato of lista_editoriales" value="{{dato.Ideditorial}}">{{dato.codeditorial}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        
+      <ion-item lines="full">
+        <ion-label position="floating">Fecha de Lanzamiento</ion-label>
+        <ion-input type="datetime" formControlName="FechaLanzamiento"></ion-input>
+      </ion-item>
+      
+
+      <p class="ion-text-center">
+      <ion-button (click)="altalibro(myform.value)">Agregar Libro</ion-button>
+      </p>
+      <p class="ion-text-center">
+      <ion-button (click)="modificacionlibro(myform.value)"  >Editar</ion-button>
+      </p>
+  </form>
+   
+   
+
+  <ion-list>
+    <ion-item *ngFor="let con of lista_libros">
+      <ion-avatar>
+        <img src="../../assets/icon/libros.png">
+      </ion-avatar>
+      <ion-label>
+        
+        <h2>{{con.codlibro}}</h2>
+        <h2>{{con.nombrelibro}}</h2>
+        <h2>{{con.FechaLanzamiento}}</h2>
+        <ion-button (click)="seleccionar(con)"  >Seleccionar</ion-button>
+        <ion-button color="danger" (click) ="bajalibro(con.Idlibro)"  >Eliminar</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+ 
+</ion-content>

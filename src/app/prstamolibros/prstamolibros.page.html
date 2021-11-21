@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>PRESTAMOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="myform">
+    <p class="ion-text-center">
+      <img src="../../assets/pr.png" >
+    </p>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Codigo de prestamo </ion-label>
+        <ion-input type="number" formControlName="codprestamo" ></ion-input>
+      </ion-item>
+
+        <ion-item lines="full">
+            <ion-label>Seleccionar Cliente</ion-label>
+            <ion-select formControlName="IdContacts" placeholder="Seleccionar">
+              <ion-select-option *ngFor="let dato of lista_clientes" value="{{dato.IdContacts}}">{{dato.identificacion}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label>Seleccionar Libro</ion-label>
+            <ion-select formControlName="IdLibro" placeholder="Seleccionar">
+              <ion-select-option *ngFor="let dato of lista_libros" value="{{dato.IdLibro}}">{{dato.codlibro}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Fecha de préstamo</ion-label>
+        <ion-input type="datetime" formControlName="fecha"></ion-input>
+      </ion-item>
+
+      
+
+      <p class="ion-text-center">
+      <ion-button (click)="altaprestamo(myform.value)"  >Agregar Prestamo</ion-button>
+      </p>
+      <p class="ion-text-center">
+      <ion-button (click)="modificacionprestamo(myform.value)"  >Editar</ion-button>
+      </p>
+  </form>
+
+  <ion-list>
+    <ion-item *ngFor="let con of lista_prestamo">
+      <ion-avatar>
+        <img src="../../assets/icon/libros.png">
+      </ion-avatar>
+      <ion-label>
+        <h2 class="colorBlue">{{con.codprestamo}}</h2>
+        <h2>{{con.IdContacts}}</h2>
+        <h2>{{con.IdLibro }}</h2>
+        <h2>{{con.fecha}}</h2>
+        <ion-button (click)="seleccionar(con)"  >Seleccionar</ion-button>
+        <ion-button color="danger" (click) ="bajaprestamo(con.IdPrestamo)"  >Eliminar</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

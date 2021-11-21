@@ -1,0 +1,60 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>AUTORES</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+ <form [formGroup]="myformautor">
+    <p class="ion-text-center">
+      <img src="../../assets/atr.png" >
+    </p>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Código autor </ion-label>
+        <ion-input type="number" formControlName="codautor" ></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Nombre del autor</ion-label>
+        <ion-input type="text" formControlName="nombre" ></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Apellido del autor</ion-label>
+        <ion-input type="text" formControlName="apellido"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Nacionalidad del autor</ion-label>
+        <ion-input type="text" formControlName="nacionalidad"></ion-input>
+      </ion-item>
+
+      <p class="ion-text-center">
+      <ion-button (click)="altaautores(myformautor.value)"  >Agregar Autor</ion-button>
+      </p>
+      <p class="ion-text-center">
+      <ion-button (click)="modificacionautores(myformautor.value)"  >Editar</ion-button>
+      </p>
+  </form>
+  
+  <ion-list>
+    <ion-item *ngFor="let con of lista_autores">
+      <ion-avatar>
+        <img src="../../assets/icon/autores.png">
+      </ion-avatar>
+      <ion-label>
+        
+        <h2>{{con.codautor}}</h2>
+        <h2>{{con.nombre}}</h2>
+        <h2>{{con.apellido}}</h2>
+        <h2>{{con.nacionalidad}}</h2>
+        <ion-button (click)="seleccionar(con)"  >Seleccionar</ion-button>
+        <ion-button color="danger" (click) ="bajaa(con.IdAutores)"  >Eliminar</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

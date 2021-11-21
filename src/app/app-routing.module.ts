@@ -4,12 +4,33 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: '/principal',
     pathMatch: 'full'
   },
+  
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path: 'prestamosclientes',
+    loadChildren: () => import('./prestamosclientes/prestamosclientes.module').then( m => m.PrestamosclientesPageModule)
+  },
+  {
+    path: 'principal',
+    loadChildren: () => import('./principal/principal.module').then( m => m.PrincipalPageModule)
+  },
+  {
+    path: 'libros',
+    loadChildren: () => import('./libros/libros.module').then( m => m.LibrosPageModule)
+  },
+  {
+    path: 'autores',
+    loadChildren: () => import('./autores/autores.module').then( m => m.AutoresPageModule)
+  },
+  {
+    path: 'prstamolibros',
+    loadChildren: () => import('./prstamolibros/prstamolibros.module').then( m => m.PrstamolibrosPageModule)
+  },
+  {
+    path: 'editoriales',
+    loadChildren: () => import('./editoriales/editoriales.module').then( m => m.EditorialesPageModule)
   }
 ];
 
